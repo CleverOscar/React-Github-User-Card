@@ -1,17 +1,23 @@
 import React from 'react';
 import '../App.css';
 
-const GitHubCard = (props) => {
+import Followers from './Followers.js'
 
-    console.log(props.data)
+const GitHubCard = (props) => {
 
     return(
         <div className='github_card'>
-            <p>{props.data.login}</p>
-            <img src={props.data.avatar_url} atl="profile picture" />
-            <p>Name: {props.data.name}</p>
-            <p>Lives in: {props.data.location}</p>
-            <p>{props.data.twitter_username}</p>
+            <p>{props.data.github.login}</p>
+            <img src={props.data.github.avatar_url}
+                 alt={props.data.github.name}
+                />
+            <p>Name: {props.data.github.name}</p>
+            <p>Bio: {props.data.github.bio}</p>
+            <p>Lives in: {props.data.github.location}</p>
+            <p>User: {props.data.github.twitter_username}</p>
+            <p>Followers: {props.data.github.followers}</p>
+
+            <Followers followers={props} />
         </div>
     )
 }

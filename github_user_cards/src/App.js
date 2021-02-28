@@ -8,23 +8,28 @@ class App extends React.Component {
   constructor(){
     super();
     this.state = {
-      github: []
+      github: [],
+      followers: []
     }
   }
 
 
   componentDidMount(){
-    axios.get('https://api.github.com/users/cleveroscar')
+    const githubUser = axios.get('https://api.github.com/users/cleveroscar')
       .then((res) => this.setState({github: res.data}))
       .catch((err) => console.log(err))
-  }
+
+
+    const userFollows = axios.get('https://api.github.com/users/cleveroscar/followers')
+    .then((res) => this.setState({...this.state.github, follwers: res.data}))
+
+    }
 
   
   render() {
       return (
       <div className="App">
-        Github User Cards
-        <GitHubCard data={this.state.github} />
+        <GitHubCard data={this.state} />
       </div>
     );
   }
