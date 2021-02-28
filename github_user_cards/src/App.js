@@ -1,7 +1,8 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 import axios from 'axios'
+
+import GitHubCard from './Github_Data/GithubCard';
 
 class App extends React.Component {
   constructor(){
@@ -16,31 +17,14 @@ class App extends React.Component {
     axios.get('https://api.github.com/users/cleveroscar')
       .then((res) => this.setState({github: res.data}))
       .catch((err) => console.log(err))
-
-
-
-    // axios.get('/user?ID=12345')
-    //   .then(function (response) {
-    //     // handle success
-    //     console.log(response);
-    //   })
-    //   .catch(function (error) {
-    //     // handle error
-    //     console.log(error);
-    //   })
-    //   .then(function () {
-    //     // always executed
-    //   });
   }
-
 
   
   render() {
-
-      console.log(this.state)
       return (
       <div className="App">
-        Github User Cars
+        Github User Cards
+        <GitHubCard data={this.state.github} />
       </div>
     );
   }

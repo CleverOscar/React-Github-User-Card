@@ -36,3 +36,9 @@
     transform: rotate(360deg);
   }
 }
+
+.github_card {
+  border: 10px solid #595959;
+  width: 75%;
+  margin: 0 auto;
+}
